@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Happooo Birthday 🎂💖</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Great+Vibes&family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="main.css" />
+</head>
+
+<body>
+
+    <!-- Floating background decorations -->
+    <div class="background-hearts">
+        <span>♡</span>
+        <span>♡</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✦</span>
+        <span>♡</span>
+        <span>✧</span>
+        <span>♡</span>
+    </div>
+
+    <div class="container">
+
+        <!-- INTRO -->
+        <section class="intro">
+
+            <div class="intro-glow"></div>
+
+            <p class="mini-title">✨ A little surprise for you ✨</p>
+
+            <h1 class="title">
+                Happooo Birthday,
+                <span>Farjana</span> 🎂
+            </h1>
+
+            <p class="subtitle">
+                Here’s something special… made just for you ✨
+            </p>
+
+            <div class="scroll-hint">
+                <span>Scroll down</span>
+                <div>↓</div>
+            </div>
+
+        </section>
+
+
+        <!-- LETTER -->
+        <section class="section fade letter-section">
+
+            <div class="section-icon">💌</div>
+
+            <p class="eyebrow">A little birthday letter</p>
+
+            <h2>Dear FARJANA 👸</h2>
+
+            <div class="divider">
+                <span>(Mere Pyari Behan)</span>
+            </div>
+
+            <p class="message">
+                "Wishing you a day filled with joy, success, peace, laughter, and all your
+                heart's desires. Happy Birthday!<br><br>
+                You deserve all the happiness, smiles, and magic in the world💫"
+            </p>
+
+            <p class="signature">
+                With all my badmoshi,<br>
+                Yours truly,
+            </p>
+
+            <p class="name">
+                Friend
+                <br>
+                🤍✨🤍
+            </p>
+
+        </section>
+
+
+        <!-- SONG PLAYLIST -->
+        <section class="section fade">
+
+            <div class="section-icon">🎶</div>
+
+            <p class="eyebrow">Your little playlist</p>
+
+            <h2>Songs That Remind Me of You</h2>
+
+            <div class="divider">
+                <span>♫</span>
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-number">01</div>
+
+                <div class="song-info">
+                    <p>Yaaron</p>
+                    <span>A little melody for you ✨</span>
+                </div>
+
+                <audio controls>
+                    <source src="audio/Yaaron.mp3" type="audio/mpeg">
+                </audio>
+
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-number">02</div>
+
+                <div class="song-info">
+                    <p>Gilehriyan</p>
+                    <span>A song which reminds me of you 💫</span>
+                </div>
+
+                <audio controls>
+                    <source src="audio/Gilehriyan.mp3" type="audio/mpeg">
+                </audio>
+
+            </div>
+
+
+            <div class="song">
+
+                <div class="song-number">03</div>
+
+                <div class="song-info">
+                    <p>Friends</p>
+                    <span>Because three is better than one 🎵</span>
+                </div>
+
+                <audio controls>
+                    <source src="audio/Song.mp3" type="audio/mpeg">
+                </audio>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME -->
+        <section class="section fade game-section">
+
+            <div class="game-decoration">🎮</div>
+
+            <p class="eyebrow">Ready?</p>
+
+            <h2>A Little Game</h2>
+
+            <p class="game-intro">
+                Catch the Chocolates before time runs out! 💕
+            </p>
+
+            <div class="game-box">
+
+                <div class="game-icon">🍫</div>
+
+                <h3>Catch the Chocolates</h3>
+
+                <p>
+                    Think you can catch enough chocolates in 30 seconds?
+                </p>
+
+                <button type="button" id="openGame">
+                    <span>Play Game</span>
+                    <span class="button-arrow">→</span>
+                </button>
+
+                <p id="gameMsg">
+                    Let's play something fun ✨
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- GAME MODAL -->
+        <div id="gameModal" class="modal">
+
+            <div class="modal-content">
+
+                <button class="modal-close" id="gameClose">
+                    ×
+                </button>
+
+                <div class="modal-icon">👾</div>
+
+                <h3 id="gameTitle">
+                    Catch the choco & Kitty! 
+                </h3>
+
+                <div class="game-stats">
+
+                    <div class="stat">
+                        <span>🍫</span>
+                        <strong id="score">Chocolates Caught: 0</strong>
+                    </div>
+
+                    <div class="stat">
+                        <span>⏱️</span>
+                        <strong id="timer">Time Left: 30s</strong>
+                    </div>
+
+                </div>
+
+                <div id="gameArea"></div>
+
+                <button type="button" id="startBtn">
+                    Start Game
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- COMPLETE MODAL -->
+        <div id="completeModal" class="modal">
+
+            <div class="modal-content complete">
+
+                <div class="celebration">🎉</div>
+
+                <h2>Game Complete!</h2>
+
+                <div class="complete-divider">
+                    ♡ ✦ ♡
+                </div>
+
+                <p>
+                    Thank you for playing!<br><br>
+                    I hope this little game made your birthday
+                    a little more special. 👍
+                </p>
+
+                <button type="button" id="closeComplete">
+                    Close ✨
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL NOTE -->
+        <section class="section fade final-section">
+
+            <div class="section-icon">🎁</div>
+
+            <p class="eyebrow">One last thing...</p>
+
+            <h2>A Tiny Surprise</h2>
+
+            <p class="final-message">
+                Yeah I am late… but nah…<br>
+                I was making a whole website for you. 😏🎉
+            </p>
+
+            <div class="image-frame">
+                <img src="assets/meme.jpg" alt="Funny birthday image">
+            </div>
+
+        </section>
+
+
+        <!-- SECOND FINAL NOTE -->
+        <section class="section fade final-section">
+
+            <div class="sparkle-title">
+                ✨ 💜 ✨
+            </div>
+
+            <p class="final-message">
+                "No fancy words, no expensive gifts — just my heart,
+                wishing you the happiest birthday ever."
+            </p>
+
+            <div class="image-frame">
+                <img src="assets/meme2.jpg" alt="Funny birthday image">
+            </div>
+
+            <p class="love-text">
+                Tomar mongol hok!🙌
+            </p>
+
+        </section>
+
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-line"></div>
+
+        <p>
+            Built with too much effort
+        </p>
+
+        <p class="footer-name">
+            — by your most brilliant and unique friend ~
+            <span>SK Iftikhar</span> 👑
+        </p>
+
+        <div class="footer-heart">
+            ♡
+        </div>
+
+    </footer>
+
+
+    <script src="main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1390 @@
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family: "Poppins", sans-serif;
+
+    color: white;
+
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(255, 93, 164, 0.20),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 30%,
+            rgba(166, 93, 255, 0.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 90%,
+            rgba(255, 105, 180, 0.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #10091c,
+            #1d0c2d,
+            #260d35,
+            #11091d
+        );
+
+    background-attachment: fixed;
+}
+
+
+/* =====================================================
+   BACKGROUND DECORATIONS
+===================================================== */
+
+.background-hearts {
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+.background-hearts span {
+    position: absolute;
+
+    color: rgba(255, 174, 216, 0.22);
+
+    font-size: 25px;
+
+    animation:
+        floatingHeart 12s linear infinite;
+
+    filter: blur(0.3px);
+}
+
+.background-hearts span:nth-child(1) {
+    left: 8%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.background-hearts span:nth-child(2) {
+    left: 85%;
+    top: 10%;
+    animation-delay: 2s;
+}
+
+.background-hearts span:nth-child(3) {
+    left: 25%;
+    top: 70%;
+    animation-delay: 4s;
+}
+
+.background-hearts span:nth-child(4) {
+    left: 70%;
+    top: 60%;
+    animation-delay: 1s;
+}
+
+.background-hearts span:nth-child(5) {
+    left: 50%;
+    top: 15%;
+    animation-delay: 5s;
+}
+
+.background-hearts span:nth-child(6) {
+    left: 90%;
+    top: 75%;
+    animation-delay: 3s;
+}
+
+.background-hearts span:nth-child(7) {
+    left: 15%;
+    top: 85%;
+    animation-delay: 6s;
+}
+
+.background-hearts span:nth-child(8) {
+    left: 55%;
+    top: 80%;
+    animation-delay: 7s;
+}
+
+@keyframes floatingHeart {
+
+    0% {
+        transform: translateY(30px) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-40px) rotate(15deg);
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(-15deg);
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
+
+.container {
+    position: relative;
+
+    z-index: 1;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 20px;
+}
+
+
+/* =====================================================
+   INTRO
+===================================================== */
+
+.intro {
+    min-height: 72vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    position: relative;
+}
+
+.intro-glow {
+    position: absolute;
+
+    width: 300px;
+    height: 300px;
+
+    background: rgba(255, 67, 151, 0.18);
+
+    filter: blur(80px);
+
+    border-radius: 50%;
+
+    animation: glowPulse 4s ease-in-out infinite;
+
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+
+    0%,
+    100% {
+        transform: scale(0.9);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 1;
+    }
+}
+
+.mini-title {
+    font-size: 0.8rem;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #eeb6ff;
+
+    margin-bottom: 18px;
+
+    animation: fadeDown 1s ease forwards;
+}
+
+.title {
+    font-family: "Great Vibes", cursive;
+
+    font-size: clamp(3rem, 9vw, 6rem);
+
+    line-height: 1.05;
+
+    color: #fff;
+
+    text-shadow:
+        0 0 10px rgba(255, 91, 173, 0.5),
+        0 0 30px rgba(255, 91, 173, 0.25);
+
+    animation: titleAppear 1.3s ease forwards;
+}
+
+.title span {
+    display: inline-block;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff72b6,
+            #d89aff,
+            #ff9bc9
+        );
+
+    background-size: 200% auto;
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+
+    animation: gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove {
+
+    to {
+        background-position: 200% center;
+    }
+}
+
+.subtitle {
+    margin-top: 20px;
+
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+
+    color: rgba(255, 255, 255, 0.7);
+
+    letter-spacing: 0.5px;
+
+    animation: fadeUp 1.5s ease forwards;
+}
+
+.scroll-hint {
+    position: absolute;
+
+    bottom: 35px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 0.7rem;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+}
+
+.scroll-hint div {
+    margin-top: 8px;
+
+    font-size: 1.4rem;
+
+    animation: scrollBounce 1.5s infinite;
+}
+
+@keyframes scrollBounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(8px);
+    }
+}
+
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section {
+    position: relative;
+
+    max-width: 650px;
+
+    margin: 70px auto;
+
+    padding: 40px 32px;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.12),
+            rgba(255, 255, 255, 0.045)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+
+    border-radius: 30px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+    backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.section.visible {
+    opacity: 1;
+
+    transform: translateY(0) scale(1);
+}
+
+.section::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 137, 197, 0.06),
+            transparent 50%,
+            rgba(181, 116, 255, 0.07)
+        );
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   SECTION ICON
+===================================================== */
+
+.section-icon,
+.game-decoration {
+    width: 55px;
+    height: 55px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 115, 180, 0.12);
+
+    border: 1px solid rgba(255, 150, 207, 0.18);
+
+    font-size: 1.6rem;
+
+    box-shadow:
+        0 8px 25px rgba(255, 74, 158, 0.12);
+}
+
+.eyebrow {
+    color: #e9a8ff !important;
+
+    font-size: 0.7rem !important;
+
+    text-transform: uppercase;
+
+    letter-spacing: 3px;
+
+    font-weight: 600;
+}
+
+.section h2 {
+    margin-top: 8px;
+
+    font-family: "jetbrains mono", monospace;
+
+    font-size: clamp(2rem, 6vw, 3rem);
+
+    font-weight: 500;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff83bc,
+            #d59aff
+        );
+
+    background-clip: text;
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.divider {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin: 12px 0 22px;
+
+    color: #ff8dc5;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+
+    width: 60px;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 139, 197, 0.5)
+        );
+}
+
+.divider::after {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(255, 139, 197, 0.5),
+            transparent
+        );
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.message {
+    color: rgba(255, 255, 255, 0.82) !important;
+
+    font-size: 0.95rem !important;
+
+    line-height: 1.9 !important;
+
+    font-style: italic;
+
+    margin: 20px auto;
+
+    max-width: 520px;
+}
+
+.signature {
+    color: #e4a3ff !important;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 1.2rem !important;
+
+    line-height: 1.5 !important;
+
+    text-align: right;
+}
+
+.name {
+    margin-top: 5px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 2rem !important;
+
+    color: #ff91c8 !important;
+
+    text-align: right;
+}
+
+
+/* =====================================================
+   SONGS
+===================================================== */
+
+.song {
+    display: grid;
+
+    grid-template-columns: 45px 1fr;
+
+    gap: 10px;
+
+    align-items: center;
+
+    text-align: left;
+
+    margin: 15px 0;
+
+    padding: 18px;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255, 255, 255, 0.065);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        border 0.3s ease;
+}
+
+.song:hover {
+    transform: translateY(-4px);
+
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    border-color:
+        rgba(255, 139, 197, 0.25);
+}
+
+.song-number {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 105, 180, 0.25),
+            rgba(176, 105, 255, 0.2)
+        );
+
+    color: #ffc1de;
+
+    font-size: 0.75rem;
+
+    font-weight: 600;
+}
+
+.song-info p {
+    color: #fff !important;
+
+    font-size: 0.95rem !important;
+
+    font-weight: 600;
+
+    margin: 0;
+}
+
+.song-info span {
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.7rem;
+}
+
+audio {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    margin-top: 7px;
+
+    height: 38px;
+}
+
+
+/* =====================================================
+   GAME
+===================================================== */
+
+.game-intro {
+    color: rgba(255, 255, 255, 0.65) !important;
+
+    margin: 10px 0 25px;
+}
+
+.game-box {
+    padding: 30px 20px;
+
+    border-radius: 25px;
+
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(255, 108, 181, 0.12),
+            transparent 65%
+        ),
+        rgba(0, 0, 0, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.game-icon {
+    font-size: 2.8rem;
+
+    margin-bottom: 8px;
+
+    animation:
+        cuteBounce 2s ease-in-out infinite;
+}
+
+@keyframes cuteBounce {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-4deg);
+    }
+
+    50% {
+        transform: translateY(-7px) rotate(4deg);
+    }
+}
+
+.game-box h3 {
+    font-size: 1.2rem;
+
+    color: white;
+
+    margin-bottom: 7px;
+}
+
+.game-box > p {
+    color: rgba(255, 255, 255, 0.6) !important;
+
+    font-size: 0.85rem !important;
+}
+
+#openGame,
+#startBtn,
+.complete button {
+    border: none;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff5fa7,
+            #b979ff
+        );
+
+    padding: 12px 24px;
+
+    border-radius: 50px;
+
+    font-family: "Poppins", sans-serif;
+
+    font-size: 0.85rem;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(255, 79, 161, 0.25);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#openGame {
+    margin-top: 18px;
+
+    display: inline-flex;
+
+    gap: 15px;
+
+    align-items: center;
+}
+
+#openGame:hover,
+#startBtn:hover,
+.complete button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 35px rgba(255, 79, 161, 0.35);
+}
+
+.button-arrow {
+    font-size: 1rem;
+}
+
+#gameMsg {
+    margin-top: 15px !important;
+
+    font-size: 0.7rem !important;
+}
+
+
+/* =====================================================
+   MODAL
+===================================================== */
+
+.modal {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    background:
+        rgba(8, 3, 15, 0.78);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.modal-content {
+    position: relative;
+
+    width: min(95%, 500px);
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(45, 20, 58, 0.97),
+            rgba(25, 12, 36, 0.97)
+        );
+
+    border: 1px solid rgba(255, 174, 220, 0.2);
+
+    box-shadow:
+        0 30px 100px rgba(0, 0, 0, 0.6),
+        0 0 50px rgba(255, 75, 164, 0.12);
+
+    animation:
+        modalPop 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes modalPop {
+
+    from {
+        opacity: 0;
+
+        transform:
+            scale(0.85)
+            translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+
+    right: 15px;
+    top: 12px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    font-size: 1.4rem;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.modal-close:hover {
+    background: rgba(255, 105, 180, 0.25);
+
+    transform: rotate(90deg);
+}
+
+.modal-icon {
+    font-size: 2rem;
+
+    margin-bottom: 5px;
+}
+
+.modal-content h3 {
+    font-family: "Pacifico", cursive;
+
+    font-size: 1.3rem;
+
+    font-weight: 400;
+
+    color: #ff91c5;
+
+    margin-bottom: 18px;
+}
+
+.game-stats {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 12px;
+
+    margin-bottom: 15px;
+}
+
+.stat {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 12px;
+
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, 0.07);
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.65rem;
+}
+
+.stat span {
+    font-size: 0.9rem;
+}
+
+#gameArea {
+    position: relative;
+
+    width: 100%;
+
+    height: 300px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(255, 131, 194, 0.12),
+            transparent 50%
+        ),
+        rgba(255, 255, 255, 0.04);
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+
+    box-shadow:
+        inset 0 0 30px rgba(0, 0, 0, 0.2);
+
+    margin-bottom: 20px;
+}
+
+.heart,
+.kitty {
+    position: absolute;
+
+    cursor: pointer;
+
+    user-select: none;
+
+    animation:
+        fall 3s linear forwards;
+
+    transition: transform 0.15s ease;
+}
+
+.heart {
+    font-size: 2rem;
+
+    filter:
+        drop-shadow(
+            0 4px 7px
+            rgba(255, 0, 100, 0.3)
+        );
+}
+
+.heart:hover,
+.kitty:hover {
+    transform: scale(1.3);
+}
+
+.kitty {
+    width: 60px;
+    height: 60px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+}
+
+@keyframes fall {
+
+    0% {
+        top: -60px;
+
+        opacity: 0;
+
+        transform: rotate(-10deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 100%;
+
+        opacity: 0;
+
+        transform: rotate(20deg);
+    }
+}
+
+
+/* =====================================================
+   COMPLETE POPUP
+===================================================== */
+
+.complete {
+    padding: 40px 30px;
+}
+
+.celebration {
+    font-size: 3.5rem;
+
+    animation:
+        celebrationPop 0.7s ease;
+}
+
+@keyframes celebrationPop {
+
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.15);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.complete h2 {
+    font-family: "Great Vibes", cursive;
+
+    font-size: 2.8rem;
+
+    font-weight: 500;
+
+    color: #ff8fc5;
+}
+
+.complete-divider {
+    color: #d39aff;
+
+    margin: 10px 0 20px;
+
+    letter-spacing: 8px;
+}
+
+.complete p {
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+
+    margin-bottom: 25px;
+}
+
+
+/* =====================================================
+   FINAL SECTIONS
+===================================================== */
+
+.final-message {
+    color: rgba(255, 255, 255, 0.8) !important;
+
+    font-size: 0.95rem !important;
+
+    line-height: 1.8 !important;
+
+    margin: 20px auto;
+
+    max-width: 500px;
+}
+
+.image-frame {
+    margin: 25px auto 5px;
+
+    padding: 8px;
+
+    max-width: 400px;
+
+    border-radius: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 115, 181, 0.5),
+            rgba(180, 117, 255, 0.5)
+        );
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.image-frame img {
+    display: block;
+
+    width: 100%;
+
+    max-width: 100%;
+
+    border-radius: 18px;
+
+    object-fit: cover;
+}
+
+.sparkle-title {
+    font-size: 1.5rem;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 8px;
+}
+
+.love-text {
+    margin-top: 22px;
+
+    font-family: "Great Vibes", cursive;
+
+    font-size: 2.4rem !important;
+
+    color: #ff8fc4 !important;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+    position: relative;
+
+    z-index: 2;
+
+    text-align: center;
+
+    padding: 35px 20px;
+
+    background:
+        rgba(5, 2, 10, 0.5);
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(10px);
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.75rem;
+}
+
+.footer-line {
+    width: 60px;
+
+    height: 2px;
+
+    margin: 0 auto 15px;
+
+    border-radius: 5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff6eae,
+            #bd80ff
+        );
+}
+
+.footer p {
+    margin: 4px 0;
+}
+
+.footer-name {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer span {
+    color: #ff91c5;
+
+    font-family: "Dancing Script", cursive;
+
+    font-size: 1rem;
+}
+
+.footer-heart {
+    margin-top: 15px;
+
+    color: #ff75b6;
+
+    font-size: 1.3rem;
+
+    animation:
+        heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =====================================================
+   GENERAL ANIMATIONS
+===================================================== */
+
+@keyframes fadeDown {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeUp {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleAppear {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+.confetti {
+    position: absolute;
+
+    width: 8px;
+
+    height: 12px;
+
+    top: -20px;
+
+    border-radius: 2px;
+
+    animation:
+        confettiFall 4s ease-in forwards;
+}
+
+@keyframes confettiFall {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(600px)
+            rotate(720deg);
+
+        opacity: 0;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 12px;
+    }
+
+    .intro {
+        min-height: 85vh;
+    }
+
+    .title {
+        font-size: clamp(2.8rem, 14vw, 4.5rem);
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .section {
+        margin: 45px auto;
+
+        padding: 30px 20px;
+
+        border-radius: 25px;
+    }
+
+    .section h2 {
+        font-size: 2.2rem;
+    }
+
+    .message {
+        font-size: 0.88rem !important;
+    }
+
+    .song {
+        padding: 14px;
+    }
+
+    #gameArea {
+        height: 270px;
+    }
+
+    .modal-content {
+        padding: 25px 16px;
+    }
+
+    .game-stats {
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .stat {
+        justify-content: center;
+    }
+
+    .complete h2 {
+        font-size: 2.5rem;
+    }
+
+    .footer {
+        font-size: 0.68rem;
+    }
+}
+
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
