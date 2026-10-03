@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Surprise 💌</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background glow -->
+    <div class="background-glow glow-1"></div>
+    <div class="background-glow glow-2"></div>
+
+    <!-- ================= INTRO ================= -->
+
+    <section class="intro" id="intro">
+
+        <div class="intro-content">
+
+            <p class="tiny-text">✨ A LITTLE SURPRISE FOR YOU ✨</p>
+
+            <h1 id="intro-text">
+                Something special<br>
+                is coming for you...
+            </h1>
+
+            <p class="intro-subtitle">
+                Just wait a little... 💕
+            </p>
+
+        </div>
+
+        <!-- Paper plane -->
+        <div class="plane-container">
+            <img
+                id="plane"
+                src="assets/plane.png"
+                alt="Paper Plane"
+            >
+        </div>
+
+        <!-- Floating hearts -->
+        <div id="hearts"></div>
+
+        <div class="scroll-hint">
+            ♡
+        </div>
+
+    </section>
+
+
+    <!-- ================= ENVELOPE ================= -->
+
+    <div class="envelope-container hidden" id="envelope-container">
+
+  <div class="envelope-scene">
+
+    <div class="envelope-aura"></div>
+
+    <div class="envelope" id="envelope"
+         role="button"
+         tabindex="0"
+         aria-label="Open envelope">
+
+      <div class="envelope-back"></div>
+
+      <!-- Letter inside -->
+      <div class="letter">
+        <div class="letter-line"></div>
+        <div class="letter-line short"></div>
+        <div class="letter-heart">♡</div>
+      </div>
+
+      <!-- Front of envelope -->
+      <div class="envelope-front"></div>
+
+      <!-- Opening flap -->
+      <div class="envelope-flap"></div>
+
+      <!-- Wax seal -->
+      <div class="seal">♥</div>
+
+    </div>
+
+  </div>
+
+  <p class="tap-text hidden" id="tap-text">
+    Touch the envelope <span>♡</span>
+  </p>
+
+  <p class="tap-hint">
+    A little surprise is waiting inside...
+  </p>
+
+</div>
+
+
+    <!-- ================= BIRTHDAY CARD ================= -->
+
+    <div
+        class="card-overlay hidden"
+        id="popup-card"
+    >
+
+        <div class="card">
+
+            <button
+                class="close-card"
+                id="close-card"
+                aria-label="Close card"
+            >
+                ×
+            </button>
+
+            <div class="card-sparkle sparkle-1">✦</div>
+            <div class="card-sparkle sparkle-2">✧</div>
+
+            <div class="card-top">
+                <span>🎀</span>
+                <span>🎂</span>
+                <span>🎀</span>
+            </div>
+
+            <p class="card-label">
+                TODAY IS YOUR DAY
+            </p>
+
+            <h2>
+                Happy Birthday
+                <span>🎉</span>
+            </h2>
+
+            <!-- CHANGE NAME HERE -->
+            <h3>
+                Dear <span>FARJANA</span> 💜
+            </h3>
+
+            <div class="divider">
+                <span>♡</span>
+                <span>♡</span>
+                <span>♡</span>
+            </div>
+
+            <p class="message">
+                Wishing you a day filled with love, laughter,
+                beautiful moments and everything your heart wishes for.
+                <br><br>
+
+                You deserve all the happiness, smiles and magic
+                in the world today and always. ✨
+            </p>
+
+            <div class="cake">
+                🎂
+            </div>
+
+            <p class="signature">
+                With lots of love,
+            </p>
+
+            <!-- CHANGE YOUR NAME HERE -->
+            <p class="name">
+                Fine Shyt
+                <br>
+                <span>❤️ ✨ 💜</span>
+            </p>
+
+            <button
+                class="surprise-button"
+                id="surprise-button"
+            >
+                <span>🎁</span>
+                See your surprise
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= CONFETTI ================= -->
+
+    <canvas id="confetti"></canvas>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const intro = document.getElementById("intro");
+            const plane = document.getElementById("plane");
+            const planeContainer = document.querySelector(".plane-container");
+
+            const envelopeContainer =
+                document.getElementById("envelope-container");
+
+            const envelope =
+                document.getElementById("envelope");
+
+            const tapText =
+                document.getElementById("tap-text");
+
+            const card =
+                document.getElementById("popup-card");
+
+            const closeCard =
+                document.getElementById("close-card");
+
+            const surpriseButton =
+                document.getElementById("surprise-button");
+
+            const heartsContainer =
+                document.getElementById("hearts");
+
+
+            /* =========================================
+               INTRO → PLANE
+            ========================================= */
+
+            setTimeout(() => {
+
+                planeContainer.classList.add("fly");
+
+                createFlyingHearts();
+
+            }, 1800);
+
+
+            /* =========================================
+               SHOW ENVELOPE
+            ========================================= */
+
+            setTimeout(() => {
+
+                intro.classList.add("fade-out");
+
+                setTimeout(() => {
+
+                    intro.style.display = "none";
+
+                    envelopeContainer.classList.remove("hidden");
+
+                    setTimeout(() => {
+                        tapText.classList.remove("hidden");
+                    }, 900);
+
+                }, 700);
+
+            }, 6500);
+
+
+            /* =========================================
+               FLYING HEARTS
+            ========================================= */
+
+            function createFlyingHearts() {
+
+                const interval = setInterval(() => {
+
+                    const heart =
+                        document.createElement("div");
+
+                    heart.className = "heart";
+
+                    const hearts = [
+                        "♡",
+                        "♥",
+                        "💗",
+                        "💖",
+                        "✨"
+                    ];
+
+                    heart.textContent =
+                        hearts[
+                            Math.floor(
+                                Math.random() * hearts.length
+                            )
+                        ];
+
+                    heart.style.left =
+                        (planeContainer.offsetLeft + 20) + "px";
+
+                    heart.style.top =
+                        (planeContainer.offsetTop + 20) + "px";
+
+                    heart.style.setProperty(
+                        "--random-x",
+                        (Math.random() * 100 - 50) + "px"
+                    );
+
+                    heartsContainer.appendChild(heart);
+
+                    setTimeout(() => {
+                        heart.remove();
+                    }, 2200);
+
+                }, 300);
+
+                setTimeout(() => {
+                    clearInterval(interval);
+                }, 4000);
+
+            }
+
+
+// =========================================
+// CINEMATIC ENVELOPE OPENING
+// =========================================
+
+let envelopeOpened = false;
+
+function openEnvelope() {
+
+  if (envelopeOpened) return;
+
+  envelopeOpened = true;
+
+  // Hide instruction
+  tapText.classList.add("hidden");
+
+  // STEP 1 — squeeze
+  envelope.classList.add("squeezing");
+
+  // STEP 2 — open after squeeze
+  setTimeout(() => {
+
+    envelope.classList.remove("squeezing");
+    envelope.classList.add("opening");
+
+    // STEP 3 — BIG BLAST
+    createEnvelopeBlast();
+
+  }, 500);
+
+  // STEP 4 — fade envelope away
+  setTimeout(() => {
+    envelopeContainer.classList.add("opening-fade");
+  }, 1050);
+
+  // STEP 5 — birthday message appears
+  setTimeout(() => {
+
+    envelopeContainer.classList.add("hidden");
+
+    showCard();
+
+  }, 1350);
+}
+
+
+// Click
+envelope.addEventListener("click", openEnvelope);
+
+
+// Keyboard support
+envelope.addEventListener("keydown", (event) => {
+
+  if (event.key === "Enter" || event.key === " ") {
+    event.preventDefault();
+    openEnvelope();
+  }
+
+});
+
+/* ========================================= 
+SHOW BIRTHDAY CARD 
+========================================= */ 
+function showCard() { card.classList.remove("hidden"); setTimeout(() => { card.classList.add("show"); }, 50); startConfetti(); }
+
+
+// =========================================
+// ENVELOPE BLAST EFFECT
+// =========================================
+
+function createEnvelopeBlast() {
+
+  const rect = envelope.getBoundingClientRect();
+
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height * 0.45;
+
+
+  // White/pink flash
+  const flash = document.createElement("div");
+
+  flash.className = "envelope-flash";
+
+  flash.style.left = `${centerX}px`;
+  flash.style.top = `${centerY}px`;
+
+  document.body.appendChild(flash);
+
+  setTimeout(() => flash.remove(), 900);
+
+
+  // Shockwave
+  const ring = document.createElement("div");
+
+  ring.className = "blast-ring";
+
+  ring.style.left = `${centerX}px`;
+  ring.style.top = `${centerY}px`;
+
+  document.body.appendChild(ring);
+
+  setTimeout(() => ring.remove(), 1000);
+
+
+  // Flying particles
+  const particles = [
+    "💖",
+    "💗",
+    "💕",
+    "💜",
+    "✨",
+    "♡",
+    "✦",
+    "🎀",
+    "💫",
+    "⭐"
+  ];
+
+
+  for (let i = 0; i < 55; i++) {
+
+    const particle = document.createElement("span");
+
+    particle.className = "burst-particle";
+
+    particle.textContent =
+      particles[Math.floor(Math.random() * particles.length)];
+
+
+    const angle =
+      (Math.PI * 2 * i / 55) +
+      (Math.random() - 0.5) * 0.5;
+
+    const distance =
+      120 + Math.random() * 280;
+
+
+    const x = Math.cos(angle) * distance;
+    const y = Math.sin(angle) * distance;
+
+
+    particle.style.left = `${centerX}px`;
+    particle.style.top = `${centerY}px`;
+
+    particle.style.setProperty(
+      "--x",
+      `${x}px`
+    );
+
+    particle.style.setProperty(
+      "--y",
+      `${y}px`
+    );
+
+    particle.style.setProperty(
+      "--r",
+      `${Math.random() * 720 - 360}deg`
+    );
+
+
+    particle.style.fontSize =
+      `${14 + Math.random() * 22}px`;
+
+
+    particle.style.animationDelay =
+      `${Math.random() * 0.15}s`;
+
+
+    document.body.appendChild(particle);
+
+
+    setTimeout(() => {
+      particle.remove();
+    }, 1500);
+  }
+}
+            /* =========================================
+               CLOSE CARD
+            ========================================= */
+
+            closeCard.addEventListener("click", () => {
+
+                card.classList.remove("show");
+
+                setTimeout(() => {
+                    card.classList.add("hidden");
+                }, 500);
+
+            });
+
+
+            /* =========================================
+               SURPRISE BUTTON
+            ========================================= */
+
+            surpriseButton.addEventListener("click", () => {
+
+                surpriseButton.classList.add("clicked");
+
+                createBigConfetti();
+
+                setTimeout(() => {
+
+                    const fade =
+                        document.createElement("div");
+
+                    fade.className = "page-transition";
+
+                    document.body.appendChild(fade);
+
+                    requestAnimationFrame(() => {
+                        fade.classList.add("active");
+                    });
+
+                    setTimeout(() => {
+
+                        window.location.href =
+                            "main.html";
+
+                    }, 1000);
+
+                }, 800);
+
+            });
+
+
+            /* =========================================
+               CONFETTI
+            ========================================= */
+
+            const canvas =
+                document.getElementById("confetti");
+
+            const ctx =
+                canvas.getContext("2d");
+
+            let confettiPieces = [];
+
+            let animationId;
+
+
+            function resizeCanvas() {
+
+                canvas.width =
+                    window.innerWidth;
+
+                canvas.height =
+                    window.innerHeight;
+
+            }
+
+            resizeCanvas();
+
+            window.addEventListener(
+                "resize",
+                resizeCanvas
+            );
+
+
+            const colors = [
+                "#ff6fae",
+                "#ff9ed2",
+                "#c79aff",
+                "#ffd6ea",
+                "#ffffff",
+                "#b8a0ff"
+            ];
+
+
+            function createConfetti() {
+
+                confettiPieces = [];
+
+                for (
+                    let i = 0;
+                    i < 170;
+                    i++
+                ) {
+
+                    confettiPieces.push({
+
+                        x:
+                            Math.random() *
+                            canvas.width,
+
+                        y:
+                            Math.random() *
+                            -canvas.height,
+
+                        size:
+                            Math.random() * 7 + 3,
+
+                        speed:
+                            Math.random() * 3 + 2,
+
+                        rotation:
+                            Math.random() * 360,
+
+                        rotationSpeed:
+                            Math.random() * 8 - 4,
+
+                        color:
+                            colors[
+                                Math.floor(
+                                    Math.random() *
+                                    colors.length
+                                )
+                            ]
+
+                    });
+
+                }
+
+            }
+
+
+            function drawConfetti() {
+
+                ctx.clearRect(
+                    0,
+                    0,
+                    canvas.width,
+                    canvas.height
+                );
+
+                confettiPieces.forEach(piece => {
+
+                    ctx.save();
+
+                    ctx.translate(
+                        piece.x,
+                        piece.y
+                    );
+
+                    ctx.rotate(
+                        piece.rotation *
+                        Math.PI / 180
+                    );
+
+                    ctx.fillStyle =
+                        piece.color;
+
+                    ctx.globalAlpha = 0.9;
+
+                    ctx.fillRect(
+                        -piece.size / 2,
+                        -piece.size / 2,
+                        piece.size,
+                        piece.size * 1.8
+                    );
+
+                    ctx.restore();
+
+
+                    piece.y +=
+                        piece.speed;
+
+                    piece.rotation +=
+                        piece.rotationSpeed;
+
+                    if (
+                        piece.y >
+                        canvas.height + 20
+                    ) {
+
+                        piece.y = -20;
+
+                        piece.x =
+                            Math.random() *
+                            canvas.width;
+
+                    }
+
+                });
+
+                animationId =
+                    requestAnimationFrame(
+                        drawConfetti
+                    );
+
+            }
+
+
+            function startConfetti() {
+
+                createConfetti();
+
+                cancelAnimationFrame(
+                    animationId
+                );
+
+                drawConfetti();
+
+            }
+
+
+            function createBigConfetti() {
+
+                createConfetti();
+
+                confettiPieces.forEach(piece => {
+
+                    piece.y =
+                        Math.random() *
+                        canvas.height;
+
+                    piece.speed =
+                        Math.random() * 6 + 3;
+
+                });
+
+            }
+
+        });
+
+    </script>
+
+</body>
+</html>
